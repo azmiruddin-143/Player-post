@@ -14,7 +14,7 @@ import { FaQuoteLeft } from "react-icons/fa";
 
 const Testimonial = () => {
   return (
-    <div className="relative mx-24">
+    <div className="relative mx-24 my-24">
       <Swiper
         modules={[Pagination, Autoplay]} // Enable Pagination and Autoplay
         pagination={{

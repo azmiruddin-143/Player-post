@@ -2,7 +2,7 @@ import React from 'react';
 import { FaArrowRight } from "react-icons/fa6";
 const Newsletter = () => {
     return (
-        <div className='bg-[#3c4483] py-10 px-10 flex items-center w-fit rounded-2xl gap-5 mx-auto justify-center'>
+        <div className='bg-[#3c4483] py-10 px-10 flex items-center w-fit rounded-2xl gap-5 mx-auto my-24 justify-center'>
             <div>
                 <h1 className='text-white font-bold text-4xl'>Subscribe to Our Newsletter</h1>
                 <p className='text-base text-gray-100'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
