@@ -9,3 +9,6 @@
     color: #3c4483;
     border-bottom: 1px solid #3c4483 ;
 }
+::after {
+    font-size: 20px !important;
+}

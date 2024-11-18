@@ -3,6 +3,7 @@ import BannerSlider from '../Banner Component/BannerSlider';
 import Services from '../Mian Part/Services Section/Services';
 import FeaturedServices from '../Featured Services/FeaturedServices';
 import Testimonial from '../Testimonial Components/Testimonial';
+import Newsletter from '../Newsletter Component/Newsletter';
 
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
             <Services></Services>
             <FeaturedServices></FeaturedServices>
             <Testimonial></Testimonial>
+            <Newsletter></Newsletter>
         </div>
     );
 };

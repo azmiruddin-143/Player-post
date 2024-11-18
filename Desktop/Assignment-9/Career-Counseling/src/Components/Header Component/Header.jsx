@@ -10,6 +10,9 @@ const Header = () => {
             <div>
                 <ul className='text-lg text-black mr-32 flex gap-5'>
                     <NavLink to="/">Home</NavLink>
+                    <NavLink to="/about">About</NavLink>
+                    <NavLink to="/service">Service</NavLink>
+                    <NavLink to="/cource">Cource</NavLink>
                     <NavLink to="/myprofile">MyProfile</NavLink>
                 </ul>
             </div>

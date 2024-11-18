@@ -12,8 +12,8 @@ import "swiper/css/navigation";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const BannerSlider = () => {
-    return (
-        <div className="w-full relative">
+  return (
+    <div className="w-full relative">
       <Swiper
         modules={[Navigation, Autoplay]}
         navigation={{
@@ -31,71 +31,76 @@ const BannerSlider = () => {
         <SwiperSlide>
           {/* <img src={careerWorkshops} alt="Slide 1" className="w-full h-full bg-black  object-cover" /> */}
           <div style={{
-                backgroundImage: `url(${personalityCareer})`, backgroundColor: "#3c448384",
-                backgroundBlendMode: "multiply"
-            }} className="bg-cover bg-no-repeat bg-center w-full h-full ">
-             
+            backgroundImage: `url(${personalityCareer})`, backgroundColor: "#3c448384",
+            backgroundBlendMode: "multiply"
+          }} className="bg-cover bg-no-repeat bg-center w-full h-full ">
+
           </div>
-          
+
         </SwiperSlide>
         <SwiperSlide>
           {/* <img src={counselingSessions} alt="Slide 2" className="w-full h-full object-cover" /> */}
           <div style={{
-                backgroundImage: `url(${counselingSessions})`, backgroundColor: "#3c448384",
-                backgroundBlendMode: "multiply"
-            }} className="bg-cover bg-no-repeat bg-center w-full h-full ">
-             
+            backgroundImage: `url(${counselingSessions})`, backgroundColor: "#3c448384",
+            backgroundBlendMode: "multiply"
+          }} className="bg-cover bg-no-repeat bg-center w-full h-full ">
+
           </div>
         </SwiperSlide>
         <SwiperSlide>
           {/* <img src={resumeReview} alt="Slide 3" className="w-full h-full object-cover" /> */}
           <div style={{
-                backgroundImage: `url(${careerWorkshops})`, backgroundColor: "#3c448384",
-                backgroundBlendMode: "multiply"
-            }} className="bg-cover bg-no-repeat bg-center w-full h-full ">
-             
+            backgroundImage: `url(${careerWorkshops})`, backgroundColor: "#3c448384",
+            backgroundBlendMode: "multiply"
+          }} className="bg-cover bg-no-repeat bg-center w-full h-full ">
+
           </div>
         </SwiperSlide>
         <SwiperSlide>
           {/* <img src={resumeReview} alt="Slide 3" className="w-full h-full object-cover" /> */}
           <div style={{
-                backgroundImage: `url(${resumeReview})`, backgroundColor: "#3c448384",
-                backgroundBlendMode: "multiply"
-            }} className="bg-cover bg-no-repeat bg-center w-full h-full ">
-             
+            backgroundImage: `url(${resumeReview})`, backgroundColor: "#3c448384",
+            backgroundBlendMode: "multiply"
+          }} className="bg-cover bg-no-repeat bg-center w-full h-full ">
+
           </div>
         </SwiperSlide>
         <SwiperSlide>
           {/* <img src={resumeReview} alt="Slide 3" className="w-full h-full object-cover" /> */}
           <div style={{
-                backgroundImage: `url(${skillDevelopment})`, backgroundColor: "#3c448384",
-                backgroundBlendMode: "multiply"
-            }} className="bg-cover bg-no-repeat bg-center w-full h-full ">
-             
+            backgroundImage: `url(${skillDevelopment})`, backgroundColor: "#3c448384",
+            backgroundBlendMode: "multiply"
+          }} className="bg-cover bg-no-repeat bg-center w-full h-full ">
+
           </div>
         </SwiperSlide>
         <SwiperSlide>
           {/* <img src={resumeReview} alt="Slide 3" className="w-full h-full object-cover" /> */}
           <div style={{
-                backgroundImage: `url(${careerChange})`, backgroundColor: "#3c448384",
-                backgroundBlendMode: "multiply"
-            }} className="bg-cover bg-no-repeat bg-center w-full h-full ">
-             
+            backgroundImage: `url(${careerChange})`, backgroundColor: "#3c448384",
+            backgroundBlendMode: "multiply"
+          }} className="bg-cover bg-no-repeat bg-center w-full h-full ">
+
           </div>
         </SwiperSlide>
       </Swiper>
 
-      {/* Custom Left Arrow */}
-      <div className="swiper-button-prev absolute  top-1/2 left-4 z-10 transform -translate-y-1/2 cursor-pointer  bg-[#e09d15] rounded-full p-8">
-        <FaArrowLeft />
-      </div>
+  
+        {/* Custom Left Arrow */}
+        <div className="swiper-button-prev absolute  top-1/2 left-5 z-10 transform -translate-y-1/2 cursor-pointer  bg-[#e09d15] rounded-full p-6">
+          <FaArrowLeft />
+        </div>
 
-      {/* Custom Right Arrow */}
-      <div className="swiper-button-next absolute top-1/2 right-4 z-10 transform -translate-y-1/2 cursor-pointer  text-white bg-[#e09d15] rounded-full p-8">
-        <FaArrowRight />
-      </div>
+        {/* Custom Right Arrow */}
+        <div className="swiper-button-next absolute top-1/2 right-4 z-10 transform -translate-y-1/2 cursor-pointer  text-white bg-[#e09d15] rounded-full p-6">
+          <FaArrowRight />
+        </div>
+    
+
+
+
     </div>
-    );
+  );
 };
 
 export default BannerSlider;
