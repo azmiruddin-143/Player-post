@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+.active {
+    color: #3c4483;
+    border-bottom: 1px solid #3c4483 ;
+}
