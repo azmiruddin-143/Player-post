@@ -65,7 +65,7 @@ useEffect(() => {
 
     // forget password//
 
-    const passwordForget = () =>{
+    const passwordForget = (email) =>{
        return sendPasswordResetEmail(auth, email)
  
     }

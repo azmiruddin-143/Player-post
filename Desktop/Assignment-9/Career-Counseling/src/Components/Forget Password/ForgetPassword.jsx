@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { authContext } from '../Auth Provider setup/AuthProvider';
-
+import { Link } from 'react-router-dom';
 const ForgetPassword = () => {
     const { passwordForget } = useContext(authContext)
 
@@ -8,9 +8,13 @@ const ForgetPassword = () => {
     const forgetPassword = (event) => {
         event.preventDefault()
         const email = event.target.email.value
+
+       
         passwordForget(email)
             .then(() => {
                 console.log("email.chek");
+                event.target.reset()
+                window.open("https://mail.google.com/", "_blank");
             })
             .catch(() => {
                 console.log("errre");
@@ -29,8 +33,9 @@ const ForgetPassword = () => {
                                 <input type="email" name='email' placeholder="Enter your Email" className="input input-bordered" required />
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn bg-[#3c4483] text-white">Forget Password</button>
+                                <button className="btn bg-[#3c4483] text-white"> Reset password </button>
                             </div>
+                            <h1 className='text-lg text-center'>New password setup ? <Link to="/login" className='text-[#e09d15]'>Login</Link></h1>
                         </form>
                     </div>
                 </div>
