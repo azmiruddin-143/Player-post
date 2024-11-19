@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { authContext } from '../Auth Provider setup/AuthProvider';
 
 const Header = () => {
+    const {user} = useContext(authContext)
     return (
         <div className='flex justify-between 2xl:px-28 xl:px-20 lg:px-14   items-center py-5 bg-base-200'>
             <div>
@@ -17,6 +19,7 @@ const Header = () => {
                 </ul>
             </div>
             <div>
+                <h1>{user?.email}</h1>
                 <button className='bg-[#e09d15] text-white font-semibold text-lg py-2 px-6 rounded-lg'>Login</button>
             </div>
         </div>
