@@ -58,6 +58,7 @@ const Register = () => {
             .then((result) => {
                 const user = result.user
                 console.log(user);
+                event.target.reset(); 
 
                 // update Profile//
                 myProfileUpdate({ displayName: name, photoURL: photourl })

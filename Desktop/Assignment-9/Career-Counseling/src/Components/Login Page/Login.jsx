@@ -32,11 +32,14 @@ const Login = () => {
             .then((result) => {
                 const user = result.user
                 console.log(user);
-
+                toast.success("Login successful!", {
+                    autoClose: 3000,
+                });
+                event.target.reset(); 
             })
 
             .catch((error) => {
-                toast.error(`Registration failed: ${error.message}`, {
+                toast.error(`login failed: ${error.message}`, {
                     autoClose: 3000,
                 });
             })
@@ -89,9 +92,8 @@ const Login = () => {
                             <div onClick={googleRegister} className='mx-auto'>
                                 <img className='w-[30px]' src={googleImage} alt="" />
                             </div>
-                            <h1 className='text-lg text-center'>Already a user ? <Link to="/login" className='text-[#e09d15]'>Login</Link></h1>
+                            <h1 className='text-lg text-center'>Need an account ? <Link to="/register" className='text-[#e09d15]'>Register</Link></h1>
                         </form>
-
                     </div>
                 </div>
             </div>
