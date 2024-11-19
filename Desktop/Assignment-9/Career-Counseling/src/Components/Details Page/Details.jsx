@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLoaderData } from 'react-router-dom';
 
 const Details = () => {
@@ -21,6 +22,9 @@ const Details = () => {
 
     return (
         <div className='flex justify-center my-10 gap-12'>
+            <Helmet>
+                <title>Details</title>
+            </Helmet>
             <div>
                 <img className='h-[300px] w-[500px]' src={image} alt="" />
                 <div className='space-y-2'>

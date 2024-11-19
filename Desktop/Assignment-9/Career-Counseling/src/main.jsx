@@ -14,6 +14,7 @@ import Login from './Components/Login Page/Login';
 import MyProfile from './Components/My Profile/MyProfile';
 import PrivateRouts from './Firebase Setup/Private Router/PrivateRouts';
 import ForgetPassword from './Components/Forget Password/ForgetPassword';
+import { HelmetProvider } from 'react-helmet-async';
 
 
 
@@ -76,8 +77,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <AuthProvider>
-    <StrictMode>
-      <RouterProvider router={router} />
-    </StrictMode>,
+    <HelmetProvider>
+      <StrictMode>
+        <RouterProvider router={router} />
+      </StrictMode>,
+    </HelmetProvider>
   </AuthProvider>
 )

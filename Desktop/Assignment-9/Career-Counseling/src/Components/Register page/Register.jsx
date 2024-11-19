@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import {  signOut } from 'firebase/auth';
 import { auth } from '../../Firebase Setup/Firebase.init';
+import { Helmet } from 'react-helmet-async';
 const Register = () => {
     const { registerUser, myProfileUpdate,googleRegister,setuser,} = useContext(authContext)
     const [show, setHide] = useState(false)
@@ -117,7 +118,9 @@ const Register = () => {
 
     return (
         <div>
-
+             <Helmet>
+                 <title>Register</title>
+             </Helmet>
             <div className="my-10 ">
                 <div className="hero-content flex-col mx-auto lg:flex-row-reverse">
                     <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl">

@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { authContext } from "../Auth Provider setup/AuthProvider";
-
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
+import { Helmet } from "react-helmet-async";
 
 const MyProfile = () => {
 
@@ -13,7 +13,7 @@ const MyProfile = () => {
         const name = event.target.name.value
         const photourl = event.target.photourl.value
 
-    
+
         // update Profile//
         myProfileUpdate({ displayName: name, photoURL: photourl })
             .then(() => {
@@ -33,6 +33,10 @@ const MyProfile = () => {
 
     return (
         <div>
+
+            <Helmet>
+                <title>My Profile</title>
+            </Helmet>
             <div className="my-10 ">
                 <div className="hero-content flex-col mx-auto lg:flex-row-reverse">
                     <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl">
