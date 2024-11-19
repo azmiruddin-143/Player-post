@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { authContext } from '../Auth Provider setup/AuthProvider';
 
 const ForgetPassword = () => {
+    const { passwordForget } = useContext(authContext)
 
 
-    const forgetPassword = (event) =>{
-         event.oreventDefault()
+    const forgetPassword = (event) => {
+        event.preventDefault()
+        const email = event.target.email.value
+        passwordForget(email)
+            .then(() => {
+                console.log("email.chek");
+            })
+            .catch(() => {
+                console.log("errre");
+            })
     }
     return (
         <div>

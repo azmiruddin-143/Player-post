@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import { auth } from '../../Firebase Setup/Firebase.init';
 import { GoogleAuthProvider } from "firebase/auth";
@@ -63,6 +63,14 @@ useEffect(() => {
 
 
 
+    // forget password//
+
+    const passwordForget = () =>{
+       return sendPasswordResetEmail(auth, email)
+ 
+    }
+
+
     const authObjct = {
         person: "Azmir",
         registerUser,
@@ -72,7 +80,8 @@ useEffect(() => {
         myProfileUpdate,
         googleRegister,
         userLogout,
-        loader
+        loader,
+        passwordForget
     }
     return (
         <div>
