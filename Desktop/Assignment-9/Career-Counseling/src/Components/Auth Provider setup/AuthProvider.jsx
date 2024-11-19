@@ -1,46 +1,36 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import { auth } from '../../Firebase Setup/Firebase.init';
 import { GoogleAuthProvider } from "firebase/auth";
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 export const authContext = createContext()
 const AuthProvider = ({ children }) => {
     const provider = new GoogleAuthProvider();
     const [user, setuser] = useState(null)
+    const [loader, setLoader] = useState(true)
 
     // ggogle user//
 
     const googleRegister = () => {
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                setuser(result.user);
-            })
-            .catch((error) => {
-                console.log(error.message);
-            })
+       return signInWithPopup(auth, provider)
+            
     }
 
     // create User//
     const registerUser = (email, password) => {
+        setLoader(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     // login User //
 
     const loginUser = (email, password) => {
+        setLoader(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
-    // User Chek onAuthStateChanged //
-
-    useEffect(() => {
-        const unsubscibe = onAuthStateChanged(auth, (currentUser) => {
-            setuser(currentUser)
-
-        })
-        return () => {
-            unsubscibe()
-        }
-    }, [])
+    
 
 
     // update profile //
@@ -49,6 +39,27 @@ const AuthProvider = ({ children }) => {
         return updateProfile(auth.currentUser, profileUpdate)
     }
 
+
+// User Chek onAuthStateChanged //
+
+useEffect(() => {
+    const unsubscibe = onAuthStateChanged(auth, (currentUser) => {
+        setuser(currentUser)
+        setLoader(false)
+
+    })
+    return () => {
+        unsubscibe()
+    }
+}, [])
+
+
+
+
+    const userLogout = () =>{
+       return signOut(auth)
+    
+    }
 
 
 
@@ -59,7 +70,9 @@ const AuthProvider = ({ children }) => {
         user,
         setuser,
         myProfileUpdate,
-        googleRegister
+        googleRegister,
+        userLogout,
+        loader
     }
     return (
         <div>

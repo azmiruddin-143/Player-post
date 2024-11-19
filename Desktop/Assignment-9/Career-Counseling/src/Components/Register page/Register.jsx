@@ -1,17 +1,23 @@
 import React, { useContext,  useState } from 'react';
-import { authContext } from '../Auth Provider setup/AuthProvider';
+import AuthProvider, { authContext } from '../Auth Provider setup/AuthProvider';
 import { IoEyeOff, IoEye } from "react-icons/io5";
 import googleImage from "../../assets/google-icon.png"
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import {  signOut } from 'firebase/auth';
+import { auth } from '../../Firebase Setup/Firebase.init';
 const Register = () => {
-    const { registerUser, myProfileUpdate,googleRegister } = useContext(authContext)
+    const { registerUser, myProfileUpdate,googleRegister,setuser,} = useContext(authContext)
     const [show, setHide] = useState(false)
+    const navigate = useNavigate()
 
     const eyeIconHandler = () => {
         setHide(!show)
     }
+
+   
+
     const registerForm = (event) => {
 
         event.preventDefault()
@@ -58,14 +64,22 @@ const Register = () => {
             .then((result) => {
                 const user = result.user
                 console.log(user);
-                event.target.reset(); 
+                navigate("/")
 
                 // update Profile//
                 myProfileUpdate({ displayName: name, photoURL: photourl })
                     .then(() => {
+                        
+                        // setuser({ displayName: name, photoURL: photourl })
+                        signOut(auth)
+                        .then(() =>{
+                            navigate("/login")
+                        })
+
                         toast.success("Registration successful!", {
                             autoClose: 3000,
                         });
+                        event.target.reset(); 
                     })
                     .catch((error) => {
                         toast.error(`Update failed: ${error.message}`, {
@@ -81,6 +95,25 @@ const Register = () => {
                 });
             })
     }
+
+
+    const googleRegisterHandler = ()=>{
+        googleRegister()
+            .then((result) => {
+                console.log(result.user);
+                toast.success("Registration successful!", {
+                    autoClose: 3000,
+                });
+                navigate("/")
+            })
+            .catch((error) => {
+                console.log(error.message);
+                toast.error(`Registration failed: ${error.message}`, {
+                    autoClose: 3000,
+                });
+            })
+     }
+
 
     return (
         <div>
@@ -138,7 +171,7 @@ const Register = () => {
                             </div>
 
                             <div className="divider">OR</div>
-                            <div onClick={googleRegister} className='mx-auto'>
+                            <div onClick={googleRegisterHandler} className='mx-auto'>
                                 <img className='w-[30px]' src={googleImage} alt="" />
                             </div>
                             <h1 className='text-lg text-center'>Already a user ? <Link to="/login" className='text-[#e09d15]'>Login</Link></h1>

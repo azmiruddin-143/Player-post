@@ -4,11 +4,12 @@ import { IoEyeOff, IoEye } from "react-icons/io5";
 import googleImage from "../../assets/google-icon.png"
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const {loginUser,googleRegister} = useContext(authContext)
-
+  const location = useLocation()
+  const navigate = useNavigate()
     const [show, setHide] = useState(false)
 
     const eyeIconHandler = () => {
@@ -35,6 +36,8 @@ const Login = () => {
                 toast.success("Login successful!", {
                     autoClose: 3000,
                 });
+
+                navigate(location?.state ? location.state : "/")
                 event.target.reset(); 
             })
 
@@ -44,6 +47,25 @@ const Login = () => {
                 });
             })
     }
+
+
+    const googleLoginHandler = ()=>{
+        googleRegister()
+            .then((result) => {
+                console.log(result.user);
+                toast.success("Login successful!", {
+                    autoClose: 3000,
+                });
+                navigate(location?.state ? location.state : "/")
+            })
+            .catch((error) => {
+                console.log(error.message);
+                toast.error(`login failed: ${error.message}`, {
+                    autoClose: 3000,
+                });
+            })
+     }
+
 
     return (
         <div>
@@ -64,7 +86,8 @@ const Login = () => {
                                 </label>
                                 <input type={`${show ? "text" : "password"}`} name='password' placeholder=" Enter your name password" className="input input-bordered" required />
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                  
+                                    <Link to="/forgetpassword" className="label-text-alt link link-hover">Forgot password?</Link>
                                 </label>
 
                                 <div onClick={eyeIconHandler}>
@@ -89,7 +112,7 @@ const Login = () => {
                             </div>
 
                             <div className="divider">OR</div>
-                            <div onClick={googleRegister} className='mx-auto'>
+                            <div onClick={googleLoginHandler} className='mx-auto'>
                                 <img className='w-[30px]' src={googleImage} alt="" />
                             </div>
                             <h1 className='text-lg text-center'>Need an account ? <Link to="/register" className='text-[#e09d15]'>Register</Link></h1>
