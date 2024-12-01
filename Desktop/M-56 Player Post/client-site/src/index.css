@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active{
+    background-color: rgb(0, 191, 255);
+    border-radius: 10px;
+    font-weight: bold;
+
+}
